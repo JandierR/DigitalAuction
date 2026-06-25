@@ -1,7 +1,10 @@
 package entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.UUID;
@@ -15,24 +18,30 @@ import java.util.UUID;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(length = 36, columnDefinition = "VARCHAR(36)")
     private UUID id;
 
 
-
-    //@NotBlank(message= "Necesitas digitar un nombre")
-    //@Size(min= 3, max= 20)
+    @NotBlank(message= "Necesitas digitar un nombre")
+    @Size(min= 3, max= 20)
+    @NotNull
     private String name;
 
-    //@NotBlank(message= "Necesitas digitar un usuario")
-    //@Size(min= 3, max= 20)
+    @NotBlank(message= "Necesitas digitar un usuario")
+    @Size(min= 3, max= 20)
+    @NotNull
     private String nickname;
 
 
-   //@NotBlank(message= "!Necesitas una contraseña¡")
-    //@Size(min= 8, max= 20)
+   @NotBlank(message= "!Necesitas una contraseña¡")
+    @Size(min= 8, max= 20)
+   @NotNull
     private String password;
 
-    //@PositiveOrZero
+    @PositiveOrZero
+    @NotNull
+    @Column(length = 6)
     private double balance;
 
 }
