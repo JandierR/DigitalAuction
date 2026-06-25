@@ -25,18 +25,15 @@ public class User {
 
     @NotBlank(message= "Necesitas digitar un nombre")
     @Size(min= 3, max= 20)
-    @NotNull
     private String name;
 
     @NotBlank(message= "Necesitas digitar un usuario")
     @Size(min= 3, max= 20)
-    @NotNull
     private String nickname;
 
 
    @NotBlank(message= "!Necesitas una contraseña¡")
     @Size(min= 8, max= 20)
-   @NotNull
     private String password;
 
     @PositiveOrZero
