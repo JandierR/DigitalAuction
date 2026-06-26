@@ -7,14 +7,16 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Builder
+@Table(name = "users")
 public class User {
 
     @Id
@@ -23,25 +25,21 @@ public class User {
     private UUID id;
 
 
-    @NotBlank(message= "Necesitas digitar un nombre")
-    @Size(min= 3, max= 20)
-    @NotNull
+    @NotBlank(message = "Enter a name")
+    @Size(min = 3, max = 20)
     private String name;
 
-    @NotBlank(message= "Necesitas digitar un usuario")
-    @Size(min= 3, max= 20)
-    @NotNull
+    @NotBlank(message = "Enter a nickname for the User")
+    @Size(min = 3, max = 20)
     private String nickname;
 
 
-   @NotBlank(message= "!Necesitas una contraseña¡")
-    @Size(min= 8, max= 20)
-   @NotNull
-    private String password;
+    @NotBlank(message = "Enter a password")
+    private String passwordHash;
 
     @PositiveOrZero
     @NotNull
-    @Column(length = 6)
-    private double balance;
+    @Column(precision = 6, scale = 2)
+    private BigDecimal balance;
 
 }
