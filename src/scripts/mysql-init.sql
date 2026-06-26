@@ -1,6 +1,3 @@
-DROP DATABASE IF EXISTS restdb;
-DROP USER IF EXISTS `auctionadmin`@`%`;
 CREATE DATABASE IF NOT EXISTS auctiondb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER IF NOT EXISTS `auctionadmin`@`%` IDENTIFIED WITH mysql_native_password BY 'password';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER, EXECUTE, CREATE VIEW, SHOW VIEW,
-CREATE ROUTINE, ALTER ROUTINE, EVENT, TRIGGER ON `auctiondb`.* TO `auctionadmin`@`%`;
+CREATE USER IF NOT EXISTS 'auctionadmin'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON `auctiondb`.* TO `auctionadmin`@`localhost`;
